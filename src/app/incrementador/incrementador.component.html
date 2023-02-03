@@ -2,4 +2,5 @@
 <input type="number" id="counter" [formControl]="counter">
 <button id="substract" (click)="decrease()">-</button>
 <button id="reset" (click)="reset()">Reset</button>
-<input type="number" id="range" [formControl]="range" [value]="rangeValue" min="1">
+<input type="number" id="range" [formControl]="range" [value]="rangeValue" (ngModelChange)="onChangeRange($event)"
+  min="1">

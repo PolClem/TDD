@@ -15,14 +15,18 @@ export class IncrementadorComponent implements OnInit {
   constructor(
     private incrementadorService: IncrementadorService,
   ) {
-    this.incrementadorService.$counter.subscribe((estado: estado) => {
-      this.counter.setValue(estado.counter)
-    })
+    // this.incrementadorService.$counter.subscribe((estado: estado) => {
+    //   this.counter.setValue(estado.counter)
+    // })
   }
 
   ngOnInit(): void {
   }
 
+  public onChangeRange(event: any) {
+    const value = event.target.value;
+    this.incrementadorService.changeRange(value);
+  }
 
   public increase() {
     // this.counter.setValue(this.range.value + this.counter.value);
