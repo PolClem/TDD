@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { IncrementadorService } from './servicios/incrementador.service';
+import { estado, IncrementadorService } from './servicios/incrementador.service';
 
 @Component({
   selector: 'app-incrementador',
@@ -14,7 +14,11 @@ export class IncrementadorComponent implements OnInit {
 
   constructor(
     private incrementadorService: IncrementadorService,
-  ) { }
+  ) {
+    this.incrementadorService.$counter.subscribe((estado: estado) => {
+      this.counter.setValue(estado.counter)
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -22,7 +26,7 @@ export class IncrementadorComponent implements OnInit {
 
   public increase() {
     // this.counter.setValue(this.range.value + this.counter.value);
-    this.incrementadorService.
+    this.incrementadorService.increase()
   }
 
   public decrease() {
